@@ -8,7 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import kr.co.browntime.www.browntimeadmin.model.BrownOrder;
 
@@ -18,7 +18,7 @@ import kr.co.browntime.www.browntimeadmin.model.BrownOrder;
 public class BrownTimeAdminOrderPagerActivity extends ActionBarActivity {
 
     private ViewPager mViewPager;
-    private ArrayList<BrownOrder> mOrders;
+    private List<BrownOrder> mOrders;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

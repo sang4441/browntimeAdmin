@@ -3,11 +3,12 @@ package kr.co.browntime.www.browntimeadmin;
 import android.content.Context;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import kr.co.browntime.www.browntimeadmin.model.BrownOrder;
 
 public class OrderLab {
-    private ArrayList<BrownOrder> mOrders;
+    private List<BrownOrder> mOrders;
     private static OrderLab sBrownLab;
     private Context mAppContext;
 
@@ -23,7 +24,11 @@ public class OrderLab {
         return sBrownLab;
     }
 
-    public ArrayList<BrownOrder> getOrders() { return mOrders; }
+    public void setOrders(List<BrownOrder> orders) {
+        mOrders = orders;
+    }
+
+    public List<BrownOrder> getOrders() { return mOrders; }
 
     public BrownOrder getOrder(int orderId) {
         for (BrownOrder c: mOrders) {

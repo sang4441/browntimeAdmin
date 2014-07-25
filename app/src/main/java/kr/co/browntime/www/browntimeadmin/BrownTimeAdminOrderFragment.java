@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -35,6 +36,9 @@ public class BrownTimeAdminOrderFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_order, parent, false);
 
+        TextView orderIdView = (TextView)v.findViewById(R.id.order_id);
+        orderIdView.setText(String.valueOf(mOrder.getmId()));
+
         ListView listView = (ListView)v.findViewById(R.id.fragment_carts);
         BrownCartAdapter adapter = new BrownCartAdapter(mOrder.getmCarts());
         listView.setAdapter(adapter);
@@ -58,6 +62,12 @@ public class BrownTimeAdminOrderFragment extends Fragment {
 
             BrownCart cart = getItem(position);
 
+            TextView cartQuantity = (TextView) convertView.findViewById(R.id.order_cart_quantity);
+            cartQuantity.setText(String.valueOf(cart.getmQuantity()));
+            TextView cartName = (TextView) convertView.findViewById(R.id.order_cart_name);
+            cartName.setText(cart.getmName());
+            TextView cartPrice = (TextView) convertView.findViewById(R.id.order_cart_price);
+            cartPrice.setText(String.valueOf(cart.getmPrice()));
 
             return convertView;
         }

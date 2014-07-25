@@ -85,6 +85,7 @@ public class BrownTimeAdminOrderListFragment extends ListFragment {
         @Override
         protected void onPostExecute(List<BrownOrder> orders) {
 
+            OrderLab.get(getActivity()).setOrders(orders);
             BrownOrderAdapter adapter = new BrownOrderAdapter(orders);
 
             setListAdapter(adapter);
