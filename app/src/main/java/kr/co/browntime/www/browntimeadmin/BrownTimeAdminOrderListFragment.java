@@ -1,12 +1,14 @@
 package kr.co.browntime.www.browntimeadmin;
 
 import android.app.ListFragment;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import org.springframework.web.client.RestTemplate;
@@ -47,11 +49,15 @@ public class BrownTimeAdminOrderListFragment extends ListFragment {
             BrownOrder order = getItem(position);
 
             TextView orderBuyerNameView = (TextView)convertView.findViewById(R.id.order_buyer_name);
+            orderBuyerNameView.setText(order.getmBuyerName());
             TextView orderTypeView = (TextView)convertView.findViewById(R.id.order_type);
-            orderTypeView.setText("here");
+            orderTypeView.setText("for here");
             TextView orderStatusView = (TextView)convertView.findViewById(R.id.order_status);
+            orderStatusView.setText("submitted");
             TextView orderDate = (TextView)convertView.findViewById(R.id.order_date);
+            orderDate.setText(order.getmTime().toString());
             TextView orderBuyerNumber = (TextView)convertView.findViewById(R.id.order_buyer_number);
+            orderBuyerNumber.setText(String.valueOf(order.getmBuyerCellNumber()));
 
             return convertView;
         }
@@ -83,5 +89,13 @@ public class BrownTimeAdminOrderListFragment extends ListFragment {
 
             setListAdapter(adapter);
         }
+    }
+
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+        BrownOrder order = (BrownOrder)(getListAdapter()).getItem(position);
+        Intent i = new Intent(getActivity(), BrownTimeAdminOrderPagerActivity.class);
+        i.putExtra(BrownTimeAdminOrderFragment.EXTRA_ORDER_ID, order.getmId());
+        startActivity(i);
     }
 }

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class BrownOrder {
+public class BrownOrder extends BrownBuyer {
     @JsonProperty("id")
     private int mId;
     @JsonProperty("sellerId")
