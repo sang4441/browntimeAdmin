@@ -20,8 +20,14 @@ public class BrownOrder extends BrownBuyer {
     private int mDuration;
     @JsonProperty("statusId")
     private int mStatusId;
+    @JsonProperty("statusName")
+    private String mStatusName;
+    @JsonProperty("typeName")
+    private String mTypeName;
     @JsonProperty("buyerId")
     private int mBuyerId;
+    @JsonProperty("address")
+    private String mAddress;
     @JsonProperty("carts")
     private ArrayList<BrownCart> mCarts;
 
@@ -95,6 +101,33 @@ public class BrownOrder extends BrownBuyer {
 
     public void setmBuyerId(int mBuyerId) {
         this.mBuyerId = mBuyerId;
+    }
+
+
+
+    public String getmStatusName() {
+        return mStatusName;
+    }
+
+    public void setmStatusName(String mStatusName) {
+        this.mStatusName = mStatusName;
+    }
+
+    public String getmTypeName() {
+        return mTypeName;
+    }
+
+    public void setmTypeName(String mTypeName) {
+        this.mTypeName = mTypeName;
+    }
+
+
+    public String getmAddress() {
+        return mAddress;
+    }
+
+    public void setmAddress(String mAddress) {
+        this.mAddress = mAddress;
     }
 
 //    @JsonProperty("id")

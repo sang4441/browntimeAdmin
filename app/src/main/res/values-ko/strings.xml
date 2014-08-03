@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="planets_array">
+        <item>About BrownTime</item>
+        <item>Staff</item>
+        <item>Menu and Order</item>
+        <item>Order status and history</item>
+        <item>Contact</item>
+    </string-array>
+
+    <string name="drawer_open">열기</string>
+    <string name="drawer_close">닫기</string>
+
+    <string name="korean_roll">rice roll</string>
+    <string name="korean_roll_2">hwatong roll</string>
+    <string name="sandwich_1">BLT</string>
+    <string name="sandwich_2">Club sandwich</string>
+    <string name="pizza_1">pizza one</string>
+    <string name="pizza_2">pizza two</string>
+
+    <string name="cart_label">장바구니</string>
+    <string name="cart_label_empty"> 가 비어있습니다.</string>
+    <string name="cart_label_not_empty"> 보러가기</string>
+    <string name="cart_added_toast">가 장바구니에 들어갔습니다</string>
+    <string name="cart_empty_toast">장바구니가 비어 있습니다</string>
+    <string name="zero">0</string>
+
+    <string name="checkout_for_here">먹고가요</string>
+    <string name="checkout_delivery">배달주문이요</string>
+    <string name="checkout_take_out">테이크아웃이요</string>
+    <string name="checkout_order_now">지금주문(다음순번)</string>
+    <string name="checkout_order_in_advance">미리주문</string>
+    <string name="checkout_timer_button_label">시간설정</string>
+
+    <string name="order_detail">주문내역</string>
+    <string name="order_menu_price_label">가격</string>
+    <string name="order_menu_name_label">품명</string>
+    <string name="order_menu_quantity_label">수량</string>
+    <string name="order_menu_price_total_label">총 주문 금액</string>
+    <string name="order_type_label">주문 타입</string>
+    <string name="order_complete_label">주문이 성공적으로 완료 되었습니다</string>
+    <string name="default_address">경기도 수원시 팔달구 인계동</string>
+    <string name="order_general_information_label">주문을 위해 정확한 정보를 입력해 주세요.</string>
+    <string name="order_name_label">이름</string>
+    <string name="order_phone_label">번호</string>
+    <string name="order_address_information_label">현재 배달 가능 지역은 인계동 입니다. 나머지 주소를 입력해 주세요.</string>
+    <string name="order_address_label">나머지 주소</string>
+    <string name="order_complete_button_label">주문 완료</string>
+    <string name="order_hour">시</string>
+    <string name="order_minute">분</string>
+    <string name="order_time_label">까지 부탁해요</string>
+
+    <string name="menu_special_instruction_hint">요청사항을 적어주세요</string>
+    <string name="menu_price_label">가격</string>
+    <string name="menu_quantity_label">수량</string>
+    <string name="menu_price_total_label">총 가격</string>
+    <string name="menu_button_add_to_cart">장바구니</string>
+    <string name="menu_button_checkout">바로주문</string>
+
+    <string name="requested">주문대기중</string>
+    <string name="confirmed">주문확인됨</string>
+    <string name="complete">주문완료</string>
+
+    <string name="takeout">테이크아웃</string>
+    <string name="forhere">먹고가기</string>
+    <string name="delivery">배달</string>
+
+    <string name="order_duration_5">5분</string>
+    <string name="order_duration_10">10분</string>
+    <string name="order_duration_15">15분</string>
+    <string name="order_duration_20">20분</string>
+    <string name="order_duration_25">25분</string>
+    <string name="order_duration_30">30분</string>
+
+
+    <string name="espresso">에스프레소 (hot)</string>
+    <string name="americano">아메리카노 (hot)</string>
+    <string name="latte_cafe">카페라떼 (hot)</string>
+    <string name="latte_cube">큐브라떼 (hot)</string>
+    <string name="capucino">카푸치노 (hot)</string>
+    <string name="caffe_moka">카페모카 (hot)</string>
+    <string name="latte_caramel">카라멜라떼 (hot)</string>
+    <string name="latte_vanilla">바닐라라떼 (hot)</string>
+    <string name="con_panna">꼰파냐 (hot)</string>
+    <string name="vienna">비엔나 (hot)</string>
+
+    <string name="shakerato">사케라또</string>
+    <string name="iced_americano">아메리카노 (ice)</string>
+    <string name="iced_latte_cafe">카페라떼 (ice)</string>
+    <string name="iced_cappucino">카푸치노 (ice)</string>
+    <string name="iced_caffe_moka">카페모카 (ice)</string>
+    <string name="iced_latte_caramel">카라멜라떼 (ice)</string>
+    <string name="iced_latte_vanilla">바닐라라떼 (ice)</string>
+    <string name="dutch_coffe">더치커피</string>
+    <string name="dutch_latte">더치라떼</string>
+    <string name="affogato">아포가토</string>
+
+    <string name="latte_chocolate">초코 (hot)</string>
+    <string name="latte_yam">고구마라떼 (hot)</string>
+    <string name="latte_greentea">그린티라떼 (hot)</string>
+    <string name="latte_grain">오곡라떼 (hot)</string>
+    <string name="latte_chai">짜이라떼 (hot)</string>
+    <string name="tea_milk">밀크티 (hot)</string>
+
+    <string name="iced_latte_chocolate">초코 (ice)</string>
+    <string name="iced_latte_yam">고구마라떼 (ice)</string>
+    <string name="iced_latte_greentea">그린티라떼 (ice)</string>
+    <string name="iced_latte_grain">오곡라떼 (ice)</string>
+    <string name="iced_latte_chai">짜이라떼 (ice)</string>
+    <string name="iced_tea_milk">밀크티 (ice)</string>
+
+    <string name="ice_tea_peach">복숭아 아이스티</string>
+    <string name="ice_tea_lemon">레몬 아이스티</string>
+    <string name="aid_yellow">엘로우 에이드</string>
+    <string name="aid_red">레드 에이드</string>
+    <string name="aid_green">드린 에이드</string>
+    <string name="aid_brown">브라운 에이드</string>
+    <string name="juice_kiwi">키위 주스</string>
+    <string name="juice_tomato">토마토 주스</string>
+    <string name="juice_orange">오렌지 주스</string>
+    <string name="smoothie_yogurt">요거트 스무디</string>
+    <string name="smoothie_strawberry">딸기 스무디</string>
+    <string name="smoothie_kiwi">키위 스무디</string>
+    <string name="smoothie_mango">망고 스무디</string>
+    <string name="smoothie_vanilla">바닐라 스무디</string>
+    <string name="smoothie_mint_chocolate">민트초콜렛 스무디</string>
+    <string name="smoothie_purple_lady">퍼플레이디 스무디</string>
+    <string name="tea_earl_grey">얼그레이</string>
+    <string name="tea_assam">아쌈</string>
+    <string name="tea_english_breakfast">잉글리쉬브랙퍼스트</string>
+    <string name="tea_green">녹차</string>
+    <string name="tea_peppermint">페퍼민트</string>
+    <string name="tea_rooibos">루이보스</string>
+    <string name="tea_camomile">카모마일</string>
+    <string name="tea_chrysanthemum">국화차</string>
+    <string name="tea_tea_lemon">레몬차</string>
+
+</resources>
