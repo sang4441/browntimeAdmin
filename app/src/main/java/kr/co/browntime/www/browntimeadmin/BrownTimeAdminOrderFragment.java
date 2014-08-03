@@ -1,5 +1,6 @@
 package kr.co.browntime.www.browntimeadmin;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,12 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Arrays;
 import java.util.List;
 
 import kr.co.browntime.www.browntimeadmin.model.BrownCart;
@@ -24,6 +25,9 @@ import kr.co.browntime.www.browntimeadmin.model.BrownOrder;
  */
 public class BrownTimeAdminOrderFragment extends Fragment {
     public static final String EXTRA_ORDER_ID = "browntime.order_id";
+    private static final int STATUS_SUBMITTED = 1;
+    private static final int STATUS_CONFIRMED = 2;
+    private static final int STATUS_COMPLETE = 3;
 
     private BrownOrder mOrder;
 
@@ -51,38 +55,57 @@ public class BrownTimeAdminOrderFragment extends Fragment {
         BrownCartAdapter adapter = new BrownCartAdapter(mOrder.getmCarts());
         listView.setAdapter(adapter);
 
-        View.OnClickListener durationListener = new View.OnClickListener() {
-            public void onClick(View v){
-                switch (v.getId()) {
-                    case R.id.order_duration_5:
-                        orderStatusToConfirmed(5);
-                        break;
-                    case R.id.order_duration_10:
-                        orderStatusToConfirmed(10);
-                        break;
-                    case R.id.order_duration_15:
-                        orderStatusToConfirmed(15);
-                        break;
-                    case R.id.order_duration_20:
-                        orderStatusToConfirmed(20);
-                        break;
-                    case R.id.order_duration_25:
-                        orderStatusToConfirmed(25);
-                        break;
-                    case R.id.order_duration_30:
-                        orderStatusToConfirmed(30);
-                        break;
+        LinearLayout buttonView = (LinearLayout)v.findViewById(R.id.order_buttons_wrap);
+        if (mOrder.getmStatusId() == STATUS_SUBMITTED) {
+            View durationListView = inflater.inflate(R.layout.buttons_minutes, null);
+            buttonView.addView(durationListView);
+
+            View.OnClickListener durationListener = new View.OnClickListener() {
+                public void onClick(View v){
+                    switch (v.getId()) {
+                        case R.id.order_duration_5:
+                            orderStatusToConfirmed(5);
+                            break;
+                        case R.id.order_duration_10:
+                            orderStatusToConfirmed(10);
+                            break;
+                        case R.id.order_duration_15:
+                            orderStatusToConfirmed(15);
+                            break;
+                        case R.id.order_duration_20:
+                            orderStatusToConfirmed(20);
+                            break;
+                        case R.id.order_duration_25:
+                            orderStatusToConfirmed(25);
+                            break;
+                        case R.id.order_duration_30:
+                            orderStatusToConfirmed(30);
+                            break;
+                    }
+
                 }
+            };
 
-            }
-        };
+            v.findViewById(R.id.order_duration_5).setOnClickListener(durationListener);
+            v.findViewById(R.id.order_duration_10).setOnClickListener(durationListener);
+            v.findViewById(R.id.order_duration_15).setOnClickListener(durationListener);
+            v.findViewById(R.id.order_duration_20).setOnClickListener(durationListener);
+            v.findViewById(R.id.order_duration_25).setOnClickListener(durationListener);
+            v.findViewById(R.id.order_duration_30).setOnClickListener(durationListener);
 
-        v.findViewById(R.id.order_duration_5).setOnClickListener(durationListener);
-        v.findViewById(R.id.order_duration_10).setOnClickListener(durationListener);
-        v.findViewById(R.id.order_duration_15).setOnClickListener(durationListener);
-        v.findViewById(R.id.order_duration_20).setOnClickListener(durationListener);
-        v.findViewById(R.id.order_duration_25).setOnClickListener(durationListener);
-        v.findViewById(R.id.order_duration_30).setOnClickListener(durationListener);
+        } else if (mOrder.getmStatusId() == STATUS_CONFIRMED) {
+            View durationListView = inflater.inflate(R.layout.button_complete_order, null);
+            buttonView.addView(durationListView);
+
+            v.findViewById(R.id.order_complete_action).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    orderStatusToComplete();
+                }
+            });
+        }
+
+
 
         return v;
     }
@@ -132,23 +155,26 @@ public class BrownTimeAdminOrderFragment extends Fragment {
         return fragment;
     }
 
+    private void orderStatusToComplete() {
+        new HttpRequestUpdateStatus().execute(STATUS_COMPLETE);
+    }
+
     private void orderStatusToConfirmed(int min) {
         new HttpRequestUpdateDuration().execute(min);
     }
 
-    private class HttpRequestUpdateDuration extends AsyncTask<Integer, Void, List<BrownOrder>> {
+    private class HttpRequestUpdateDuration extends AsyncTask<Integer, Void, BrownOrder> {
         @Override
-        protected List<BrownOrder> doInBackground(Integer... mins) {
+        protected BrownOrder doInBackground(Integer... minutes) {
             try {
 
-                int duration = mins[0];
+                int duration = minutes[0];
                 final String url = "http://10.0.2.2:8080/BrownTime/json/updateOrderDuration/"+mOrder.getmId()+"/"+duration;
                 RestTemplate restTemplate = new RestTemplate();
                 restTemplate.setMessageConverters(new JSONRequest().getMessageConverters());
+                restTemplate.put(url, String.class);
 
-                BrownOrder[] orders = restTemplate.getForObject(url, BrownOrder[].class);
-
-                return Arrays.asList(orders);
+                return new BrownOrder();
             } catch (Exception e) {
                 Log.e("MainActivity", e.getMessage(), e);
             }
@@ -157,8 +183,35 @@ public class BrownTimeAdminOrderFragment extends Fragment {
         }
 
         @Override
-        protected void onPostExecute(List<BrownOrder> orders) {
+        protected void onPostExecute(BrownOrder orders) {
+            Intent i = new Intent(getActivity(), BrownTimeAdminOrderActivity.class);
+            startActivity(i);
+        }
+    }
 
+    private class HttpRequestUpdateStatus extends AsyncTask<Integer, Void, BrownOrder> {
+        @Override
+        protected BrownOrder doInBackground(Integer... statusIds) {
+            try {
+
+                int statusId = statusIds[0];
+                final String url = "http://10.0.2.2:8080/BrownTime/json/updateOrderStatus/"+mOrder.getmId()+"/"+statusId;
+                RestTemplate restTemplate = new RestTemplate();
+                restTemplate.setMessageConverters(new JSONRequest().getMessageConverters());
+                restTemplate.put(url, String.class);
+
+                return new BrownOrder();
+            } catch (Exception e) {
+                Log.e("MainActivity", e.getMessage(), e);
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(BrownOrder orders) {
+            Intent i = new Intent(getActivity(), BrownTimeAdminOrderActivity.class);
+            startActivity(i);
         }
     }
 }

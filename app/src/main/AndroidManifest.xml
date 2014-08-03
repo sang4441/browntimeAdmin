@@ -30,6 +30,12 @@
             android:parentActivityName=".BrownTimeAdminOrderActivity" >
         >
         </activity>
+        <service
+            android:name=".service.BrownOrderService"
+            >
+        </service>
     </application>
+
+
 
 </manifest>

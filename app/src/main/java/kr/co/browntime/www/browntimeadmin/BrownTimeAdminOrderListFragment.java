@@ -2,6 +2,7 @@ package kr.co.browntime.www.browntimeadmin;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -72,6 +73,14 @@ public class BrownTimeAdminOrderListFragment extends Fragment {
             orderDate.setText(order.getmTime().toString());
             TextView orderBuyerNumber = (TextView)convertView.findViewById(R.id.order_buyer_number);
             orderBuyerNumber.setText(String.valueOf(order.getmBuyerCellNumber()));
+
+            if (order.getmStatusId() == 1) {
+                orderStatusView.setTextColor(Color.parseColor("#FF8000"));
+            } else if (order.getmStatusId() == 2) {
+                orderStatusView.setTextColor(Color.parseColor("#31B404"));
+            } else {
+                orderStatusView.setTextColor(Color.parseColor("#6E6E6E"));
+            }
 
             return convertView;
         }

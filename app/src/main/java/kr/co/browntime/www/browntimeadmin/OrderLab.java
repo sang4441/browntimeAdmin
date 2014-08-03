@@ -28,6 +28,9 @@ public class OrderLab {
         mOrders = orders;
     }
 
+    public void clearOrders() {
+        mOrders.removeAll(mOrders);
+    }
     public List<BrownOrder> getOrders() { return mOrders; }
 
     public BrownOrder getOrder(int orderId) {
