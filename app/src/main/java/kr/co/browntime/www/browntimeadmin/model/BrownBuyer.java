@@ -12,6 +12,12 @@ public class BrownBuyer {
     private String mBuyerName;
     @JsonProperty("buyerCellNumber")
     private int mBuyerCellNumber;
+    @JsonProperty("isCertified")
+    private int mIsCertified;
+    @JsonProperty("smsNumber")
+    private int mSMSNumber;
+    @JsonProperty("smsFlag")
+    private int mSMSFlag;
 
     public int getmBuyerId() {
         return mBuyerId;
@@ -35,5 +41,30 @@ public class BrownBuyer {
 
     public void setmBuyerCellNumber(int mBuyerCellNumber) {
         this.mBuyerCellNumber = mBuyerCellNumber;
+    }
+
+
+    public int getmIsCertified() {
+        return mIsCertified;
+    }
+
+    public void setmIsCertified(int mIsCertified) {
+        this.mIsCertified = mIsCertified;
+    }
+
+    public int getmSMSNumber() {
+        return mSMSNumber;
+    }
+
+    public void setmSMSNumber(int mSMSNumber) {
+        this.mSMSNumber = mSMSNumber;
+    }
+
+    public int getmSMSFlag() {
+        return mSMSFlag;
+    }
+
+    public void setmSMSFlag(int mSMSFlag) {
+        this.mSMSFlag = mSMSFlag;
     }
 }

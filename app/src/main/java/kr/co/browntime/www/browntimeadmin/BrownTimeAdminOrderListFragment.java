@@ -62,7 +62,8 @@ public class BrownTimeAdminOrderListFragment extends Fragment {
             orderBuyerNameView.setText(order.getmBuyerName());
 
             TextView orderTypeView = (TextView)convertView.findViewById(R.id.order_type);
-            String typeName = getResources().getString(getResources().getIdentifier(order.getmTypeName(),"string", packageName));
+            int id = getResources().getIdentifier(order.getmTypeName(),"string", packageName);
+            String typeName = getResources().getString(id);
             orderTypeView.setText(typeName);
 
             TextView orderStatusView = (TextView)convertView.findViewById(R.id.order_status);

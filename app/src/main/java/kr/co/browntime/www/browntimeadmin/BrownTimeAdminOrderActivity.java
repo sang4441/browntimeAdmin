@@ -26,10 +26,6 @@ public class BrownTimeAdminOrderActivity extends Activity {
         public void onReceive(Context context, Intent intent) {
             Bundle bundle = intent.getExtras();
             int newOrderNum = bundle.getInt(SERVICE_KEY);
-            if (newOrderNum > 0) {
-                int i = 1;
-                i = i+1;
-            }
         }
     };
 
