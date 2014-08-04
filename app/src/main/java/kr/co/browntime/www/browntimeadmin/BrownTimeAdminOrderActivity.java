@@ -14,6 +14,7 @@ import android.os.Bundle;
 import java.util.Calendar;
 
 import kr.co.browntime.www.browntimeadmin.service.BrownOrderService;
+import kr.co.browntime.www.browntimeadmin.service.BrownSMSService;
 
 
 public class BrownTimeAdminOrderActivity extends Activity {
@@ -46,15 +47,21 @@ public class BrownTimeAdminOrderActivity extends Activity {
         Intent intent = new Intent(this, BrownOrderService.class);
         PendingIntent pintent = PendingIntent.getService(this, 0, intent, 0);
 
+        Intent intentSMS = new Intent(this, BrownSMSService.class);
+        PendingIntent pintentSMS = PendingIntent.getService(this, 0, intentSMS, 0);
+
         AlarmManager alarm = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
 // Start every 30 seconds
-        alarm.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 30*1000, pintent);
+//        alarm.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 30*1000, pintent);
+        alarm.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 30*1000, pintentSMS);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         registerReceiver(receiver, new IntentFilter(BrownOrderService.NOTIFICATION));
+        registerReceiver(receiver, new IntentFilter(BrownSMSService.NOTIFICATION));
+
     }
     @Override
     protected void onPause() {

@@ -18,7 +18,7 @@ import kr.co.browntime.www.browntimeadmin.model.BrownBuyer;
  * Created by kimsanghwan on 8/4/2014.
  */
 public class BrownSMSService extends IntentService {
-    public static final String NOTIFICATION = "com.browntime.android.service.receiver";
+    public static final String NOTIFICATION = "com.browntime.android.SMSservice.receiver";
     public static final String RESULT = "result";
 
 

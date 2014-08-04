@@ -34,6 +34,10 @@
             android:name=".service.BrownOrderService"
             >
         </service>
+        <service
+            android:name=".service.BrownSMSService"
+            >
+        </service>
     </application>
 
 
