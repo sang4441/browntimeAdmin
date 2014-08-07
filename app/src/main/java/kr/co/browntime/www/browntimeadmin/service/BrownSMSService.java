@@ -36,7 +36,8 @@ public class BrownSMSService extends IntentService {
         protected List<BrownBuyer> doInBackground(Void... params) {
             try {
 
-                final String url = "http://10.0.2.2:8080/BrownTime/json/sendSMS";
+//                final String url = "http://10.0.2.2:8080/BrownTime/json/sendSMS";
+                final String url = "http://browntime123.cafe24.com/json/sendSMS";
                 RestTemplate restTemplate = new RestTemplate();
                 restTemplate.setMessageConverters(new JSONRequest().getMessageConverters());
 

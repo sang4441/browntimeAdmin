@@ -10,9 +10,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Arrays;
 import java.util.List;
 
-import kr.co.browntime.www.browntimeadmin.BrownTimeAdminOrderActivity;
 import kr.co.browntime.www.browntimeadmin.JSONRequest;
-import kr.co.browntime.www.browntimeadmin.OrderLab;
 import kr.co.browntime.www.browntimeadmin.model.BrownOrder;
 
 /**
@@ -38,7 +36,8 @@ public class BrownOrderService extends IntentService {
         protected List<BrownOrder> doInBackground(Void... params) {
             try {
 
-                final String url = "http://10.0.2.2:8080/BrownTime/json/getOrder";
+//                final String url = "http://10.0.2.2:8080/BrownTime/json/getOrder";
+                final String url = "http://browntime123.cafe24.com/json/getOrder";
                 RestTemplate restTemplate = new RestTemplate();
                 restTemplate.setMessageConverters(new JSONRequest().getMessageConverters());
 
@@ -57,14 +56,14 @@ public class BrownOrderService extends IntentService {
             Intent intent = new Intent(NOTIFICATION);
 //            intent.putExtra(RESULT, orders);
 
-            int updatedOrderSize = 0;
-            if (OrderLab.get(getApplicationContext()).getOrders().size() < orders.size()) {
-                OrderLab.get(getApplicationContext()).clearOrders();
-                OrderLab.get(getApplicationContext()).setOrders(orders);
-                updatedOrderSize = orders.size() - OrderLab.get(getApplicationContext()).getOrders().size();
-            }
-            intent.putExtra(BrownTimeAdminOrderActivity.SERVICE_KEY, updatedOrderSize);
-            sendBroadcast(intent);
+//            int updatedOrderSize = 0;
+//            if (OrderLab.get(getApplicationContext()).getOrders().size() < orders.size()) {
+//                OrderLab.get(getApplicationContext()).clearOrders();
+//                OrderLab.get(getApplicationContext()).setOrders(orders);
+//                updatedOrderSize = orders.size() - OrderLab.get(getApplicationContext()).getOrders().size();
+//            }
+//            intent.putExtra(BrownTimeAdminOrderActivity.SERVICE_KEY, updatedOrderSize);
+//            sendBroadcast(intent);
         }
     }
 }

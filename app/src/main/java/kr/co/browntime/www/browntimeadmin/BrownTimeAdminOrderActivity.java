@@ -52,8 +52,8 @@ public class BrownTimeAdminOrderActivity extends Activity {
 
         AlarmManager alarm = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
 // Start every 30 seconds
-//        alarm.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 30*1000, pintent);
-        alarm.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 30*1000, pintentSMS);
+        alarm.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 30*1000, pintent);
+        alarm.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 5*1000, pintentSMS);
     }
 
     @Override

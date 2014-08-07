@@ -47,8 +47,8 @@
     <string name="order_address_information_label">현재 배달 가능 지역은 인계동 입니다. 나머지 주소를 입력해 주세요.</string>
     <string name="order_address_label">나머지 주소</string>
     <string name="order_complete_button_label">주문 완료</string>
-    <string name="order_hour">시</string>
-    <string name="order_minute">분</string>
+    <string name="order_time_with_duration">%1$s 시 %2$s 분 (예상: %3$s 분)</string>
+    <string name="order_time_without_duration">%1$s 시 %2$s 분</string>
     <string name="order_time_label">까지 부탁해요</string>
 
     <string name="menu_special_instruction_hint">요청사항을 적어주세요</string>
@@ -135,5 +135,8 @@
     <string name="tea_camomile">카모마일</string>
     <string name="tea_chrysanthemum">국화차</string>
     <string name="tea_tea_lemon">레몬차</string>
+
+    <string name="user_name"># %1$s (%2$s 님)</string>
+    <string name="user_address">수원시 팔달구 %1$s</string>
 
 </resources>

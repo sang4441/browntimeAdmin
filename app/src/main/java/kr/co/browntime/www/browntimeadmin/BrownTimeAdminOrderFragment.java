@@ -169,7 +169,9 @@ public class BrownTimeAdminOrderFragment extends Fragment {
             try {
 
                 int duration = minutes[0];
-                final String url = "http://10.0.2.2:8080/BrownTime/json/updateOrderDuration/"+mOrder.getmId()+"/"+duration;
+//                final String url = "http://10.0.2.2:8080/BrownTime/json/updateOrderDuration/"+mOrder.getmId()+"/"+duration;
+
+                final String url = "http://browntime123.cafe24.com/json/updateOrderDuration/"+mOrder.getmId()+"/"+duration;
                 RestTemplate restTemplate = new RestTemplate();
                 restTemplate.setMessageConverters(new JSONRequest().getMessageConverters());
                 restTemplate.put(url, String.class);
@@ -195,7 +197,8 @@ public class BrownTimeAdminOrderFragment extends Fragment {
             try {
 
                 int statusId = statusIds[0];
-                final String url = "http://10.0.2.2:8080/BrownTime/json/updateOrderStatus/"+mOrder.getmId()+"/"+statusId;
+//                final String url = "http://10.0.2.2:8080/BrownTime/json/updateOrderStatus/"+mOrder.getmId()+"/"+statusId;
+                final String url = "http://browntime123.cafe24.com/json/updateOrderStatus/"+mOrder.getmId()+"/"+statusId;
                 RestTemplate restTemplate = new RestTemplate();
                 restTemplate.setMessageConverters(new JSONRequest().getMessageConverters());
                 restTemplate.put(url, String.class);
