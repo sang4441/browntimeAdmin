@@ -11,6 +11,7 @@
 
     <string name="drawer_open">열기</string>
     <string name="drawer_close">닫기</string>
+    <string name="refresh">새로고침</string>
 
     <string name="korean_roll">rice roll</string>
     <string name="korean_roll_2">hwatong roll</string>

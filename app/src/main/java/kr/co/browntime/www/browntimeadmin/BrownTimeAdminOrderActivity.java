@@ -33,6 +33,7 @@ public class BrownTimeAdminOrderActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_brown_time_admin_order);
 
         FragmentManager fm = getFragmentManager();
@@ -55,6 +56,7 @@ public class BrownTimeAdminOrderActivity extends Activity {
         alarm.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 30*1000, pintent);
         alarm.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 5*1000, pintentSMS);
     }
+
 
     @Override
     protected void onResume() {

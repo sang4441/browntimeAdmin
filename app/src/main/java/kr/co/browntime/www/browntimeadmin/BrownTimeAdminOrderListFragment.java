@@ -7,6 +7,9 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -36,11 +39,36 @@ public class BrownTimeAdminOrderListFragment extends Fragment {
     ListView listView;
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.fragment_order_list, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.user_order_refresh:
+                new getOrders().execute();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.list_view_order, parent, false);
         listView = (ListView) v.findViewById(R.id.content_frame);
 
-        new HttpRequestTask().execute();
+        new getOrders().execute();
 
         return v;
     }
@@ -78,8 +106,8 @@ public class BrownTimeAdminOrderListFragment extends Fragment {
             Date orderTime = order.getmTime();
             Calendar calendar = GregorianCalendar.getInstance();
             calendar.setTime(orderTime);
-            String hour = String.valueOf(calendar.get(Calendar.HOUR_OF_DAY));
-            String minute = String.valueOf(calendar.get(Calendar.HOUR));
+            String hour = String.valueOf(calendar.get(Calendar.HOUR));
+            String minute = String.valueOf(calendar.get(Calendar.MINUTE));
 
 
 
@@ -110,13 +138,13 @@ public class BrownTimeAdminOrderListFragment extends Fragment {
         }
     }
 
-    private class HttpRequestTask extends AsyncTask<Void, Void, List<BrownOrder>> {
+    private class getOrders extends AsyncTask<Void, Void, List<BrownOrder>> {
         @Override
         protected List<BrownOrder> doInBackground(Void... params) {
             try {
 
-                final String url = "http://10.0.2.2:8080/BrownTime/json/getOrder";
-//                final String url = "http://browntime123.cafe24.com/json/getOrder";
+//                final String url = "http://10.0.2.2:8080/BrownTime/json/getOrder";
+                final String url = "http://browntime123.cafe24.com/json/getOrder";
                 RestTemplate restTemplate = new RestTemplate();
                 restTemplate.setMessageConverters(new JSONRequest().getMessageConverters());
 
